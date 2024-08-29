@@ -12,4 +12,5 @@ model Product {
   name        String
   description String?
   isAvailable Boolean @default(true)
+  img         String?
 }

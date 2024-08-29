@@ -6,7 +6,7 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) { }
 
   @Post()
-  create(@Body() createProductDto: { name: string; description?: string }) {
+  create(@Body() createProductDto: { name: string; description?: string; img?: string }) {
     return this.productsService.createProduct(createProductDto);
   }
 
@@ -16,7 +16,10 @@ export class ProductsController {
   }
 
   @Patch(':id')
-  updateAvailability(@Param('id') id: string, @Body() updateDto: { isAvailable: boolean }) {
-    return this.productsService.updateProductAvailability(+id, updateDto.isAvailable);
+  updateProduct(
+    @Param('id') id: string,
+    @Body() updateDto: { isAvailable?: boolean; description?: string }
+  ) {
+    return this.productsService.updateProduct(+id, updateDto);
   }
 }

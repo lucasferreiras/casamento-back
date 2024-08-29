@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 @Injectable()
 export class ProductsService {
-  async createProduct(data: { name: string; description?: string }) {
+  async createProduct(data: { name: string; description?: string; img?: string }) {
     return prisma.product.create({ data });
   }
 
@@ -13,10 +13,10 @@ export class ProductsService {
     return prisma.product.findMany();
   }
 
-  async updateProductAvailability(id: number, isAvailable: boolean) {
+  async updateProduct(id: number, data: { isAvailable?: boolean; description?: string }) {
     return prisma.product.update({
       where: { id },
-      data: { isAvailable },
+      data,
     });
   }
 }

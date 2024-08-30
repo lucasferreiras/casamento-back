@@ -12,6 +12,5 @@ model Product {
   name        String
   description String?
   isAvailable Boolean @default(true)
-  img         String? // Certifique-se de que este campo está presente
+  img         String? 
 }
-
